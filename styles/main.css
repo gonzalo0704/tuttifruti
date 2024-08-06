@@ -29,7 +29,7 @@ body {
 }
 
 .letter-box {
-    font-size: 4em;
+    font-size: 8em;
     margin-bottom: 20px;
     border: 5px solid transparent;
     border-radius: 50%;
@@ -41,18 +41,18 @@ body {
     animation: none;
     position: absolute; /* Allows precise positioning */
     top: 50%;
-    left: 55%;
+    left: 50%;
     transform: translate(-50%, -50%); /* Centers the element */
 }
 
 .generate-button {
     padding: 10px 20px;
-    font-size: 1em;
+    font-size: 3em;
     cursor: pointer;
     margin-bottom: 20px;
     position: absolute; /* Allows precise positioning */
     top: 70%;
-    left: 55%;
+    left: 50%;
     transform: translate(-50%, -50%); /* Centers the element */
 }
 
