@@ -10,6 +10,8 @@ let timer;
 
 function getRandomLetter() {
     if (usedLetters.length === letters.length) {
+		var sound = document.getElementById("my-sound");
+		sound.play();
         return 'fin';
     }
 
@@ -20,15 +22,8 @@ function getRandomLetter() {
     return randomLetter;
 }
 
-function startTimer() {
-    clearTimeout(timer);
-    letterBox.style.animation = 'borderColorAnimation 180s linear';
-    timer = setTimeout(() => {
-        modal.style.display = 'block';
-    }, 180000);
-}
-
 generateButton.addEventListener('click', () => {
+	
     const newLetter = getRandomLetter();
     if (newLetter === 'fin') {
         letterBox.textContent = 'Fin';
@@ -36,18 +31,78 @@ generateButton.addEventListener('click', () => {
     } else {
         letterBox.textContent = newLetter;
         usedLettersBox.textContent = `Letras utilizadas: ${usedLetters.join(', ')}`;
-        startTimer();
+        startProgressBar(120000);
+		
+		//120000
     }
 });
+ 
+let wakeLock = null;
 
-closeModal.addEventListener('click', () => {
+async function requestWakeLock() {
+  try {
+    wakeLock = await navigator.wakeLock.request('screen');
+    console.log('Wake Lock activated');
+  } catch (err) {
+    console.error(`Failed to activate wake lock: ${err.name}, ${err.message}`);
+  }
+}
+
+function releaseWakeLock() {
+  if (wakeLock !== null) {
+    wakeLock.release()
+      .then(() => {
+        wakeLock = null;
+        console.log('Wake Lock released');
+      })
+      .catch(err => {
+        console.error(`Failed to release wake lock: ${err.name}, ${err.message}`);
+      });
+  }
+}
+
+function startProgressBar(duration) {
+  requestWakeLock();
+
+  const progressBar = document.getElementById("progress-bar");
+  const modal = document.getElementById("time-up-modal");
+  const closeButton = document.getElementById("close-button");
+  const startTime = Date.now();
+
+  function updateProgressBar() {
+    const elapsedTime = Date.now() - startTime;
+    const percentage = (elapsedTime / duration) * 100;
+
+    progressBar.style.width = percentage + '%';
+
+    if (elapsedTime < duration) {
+      requestAnimationFrame(updateProgressBar);
+    } else {
+      modal.style.display = 'block';
+      progressBar.style.width = '100%';
+      releaseWakeLock(); // Release the wake lock when time is up
+	  var sound1 = document.getElementById("my-sound1");
+		sound1.play();
+    }
+  }
+
+  closeButton.onclick = function() {
     modal.style.display = 'none';
-    letterBox.style.animation = 'none';
-});
+    releaseWakeLock(); // Also release the wake lock if the modal is closed early
+  };
 
-window.addEventListener('click', (event) => {
-    if (event.target === modal) {
-        modal.style.display = 'none';
-        letterBox.style.animation = 'none';
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = 'none';
+      releaseWakeLock();
     }
-});
+  };
+
+  requestAnimationFrame(updateProgressBar);
+}
+
+
+
+
+
+
