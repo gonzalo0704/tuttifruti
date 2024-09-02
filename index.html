@@ -8,16 +8,24 @@
 </head>
 <body>
     <div class="container">
+	
         <div id="letterBox" class="letter-box">?</div>
         <button id="generateButton" class="generate-button">Jugar</button>
-        <div id="usedLettersBox" class="used-letters-box"></div>
+		 <audio id="my-sound" src="assets/fin.mp3"></audio>
+		<div class="progress-bar" id="progress-bar"></div>
+        <div id="usedLettersBox" class="used-letters-box">
+		
+			</div>
+		
     </div>
-    <div id="timeUpModal" class="modal">
-        <div class="modal-content">
-            <span id="closeModal" class="close">&times;</span>
-            <p>¡Tiempo!</p>
-        </div>
-    </div>
+	
+	<div id="time-up-modal" class="modal">
+			<div class="modal-content">
+				<span class="close-button" id="close-button">&times;</span>
+				<p>¡El tiempo se ha agotado!</p>
+				<audio id="my-sound1" src="assets/tiempo.mp3"></audio>
+			</div>
+		</div>
     <script src="scripts/main.js"></script>
 </body>
 </html>
