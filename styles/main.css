@@ -39,7 +39,7 @@ body {
 }
 
 .letter-box {
-    font-size: 4em;
+    font-size: 20em;
     margin-bottom: 20px;
     border: 5px solid transparent;
     border-radius: 50%;
@@ -73,7 +73,7 @@ body {
     cursor: pointer;
     margin-bottom: 20px;
     position: absolute; /* Allows precise positioning */
-    top: 60%;
+    top: 80%;
     left: 45%;
 	width: 40%;
     transform: translate(-50%, -50%); /* Centers the element */

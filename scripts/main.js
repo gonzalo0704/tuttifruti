@@ -22,13 +22,16 @@ function getRandomLetter() {
     return randomLetter;
 }
 
+
 generateButton.addEventListener('click', () => {
 	
+	const btncat = document.getElementById("catButton");
     const newLetter = getRandomLetter();
     if (newLetter === 'fin') {
         letterBox.textContent = 'Fin';
         generateButton.disabled = true;
     } else {
+		btncat.style.display = 'none';
         letterBox.textContent = newLetter;
         usedLettersBox.textContent = `Letras utilizadas: ${usedLetters.join(', ')}`;
         startProgressBar(120000);
