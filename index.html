@@ -1,31 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TUTTI FRUTTI</title>
-    <link rel="stylesheet" href="styles/main.css">
-</head>
-<body>
-    <div class="container">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>TUTTI FRUTTI</title>
+		<link rel="stylesheet" href="styles/main.css">
+	</head>
+	<body>
 	
-        <div id="letterBox" class="letter-box">?</div>
-        <button id="generateButton" class="generate-button">Jugar</button>
-		 <audio id="my-sound" src="assets/fin.mp3"></audio>
-		<div class="progress-bar" id="progress-bar"></div>
-        <div id="usedLettersBox" class="used-letters-box">
+		<div class="container">
+			<div id="letterBox" class="letter-box">?</div>
+			<button id="generateButton" class="generate-button">Jugar</button>
+			<button id="catButton" class="catgenerate-button">Categorías</button>
+			<audio id="my-sound" src="assets/fin.mp3"></audio>
+			<div class="progress-bar" id="progress-bar"></div>
+			<div id="usedLettersBox" class="used-letters-box"></div>
+		</div>
 		
+		<div id="catmodal" class="modal">
+			<div class="modal-content">
+				<span class="close-button" id="catclose-button">&times;</span>
+				<div class="catcontainer">
+					<h1>Tutifruti</h1>
+					<form id="tutifrutiForm">
+						<label for="categories">Selecciona las categorías (Máximo 10):</label>
+						<div id="categoryList"></div>
+						<button type="button" id="startButton">Comenzar Juego</button>
+					</form>
+					<div id="selectedCategories"></div>
+					<button type="button" id="randomCategoryButton">Elegir Categoría Aleatoria</button>
+					<div id="selectedCategories"></div>
+					<div id="randomCategoryDisplay"></div>
+				</div>
 			</div>
+		</div>
 		
-    </div>
-	
-	<div id="time-up-modal" class="modal">
+		<div id="time-up-modal" class="modal">
 			<div class="modal-content">
 				<span class="close-button" id="close-button">&times;</span>
 				<p>¡El tiempo se ha agotado!</p>
 				<audio id="my-sound1" src="assets/tiempo.mp3"></audio>
 			</div>
 		</div>
-    <script src="scripts/main.js"></script>
-</body>
+		<script src="scripts/main.js"></script>
+	</body>
 </html>

@@ -9,6 +9,16 @@
         border-color: red;
     }
 }
+.catcontainer {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px; /* Ajusta el tamaño máximo para pantallas grandes */
+    box-sizing: border-box;
+}
 
 body {
     display: flex;
@@ -16,7 +26,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f0f0f0;
+    background-color: #f4f4f4;
     font-family: Arial, sans-serif;
     overflow: hidden; /* Prevents scrolling */
 }
@@ -41,7 +51,7 @@ body {
     animation: none;
     position: absolute; /* Allows precise positioning */
     top: 50%;
-    left: 55%;
+    left: 45%;
     transform: translate(-50%, -50%); /* Centers the element */
 }
 
@@ -52,7 +62,20 @@ body {
     margin-bottom: 20px;
     position: absolute; /* Allows precise positioning */
     top: 70%;
-    left: 55%;
+    left: 45%;
+	width: 40%;
+    transform: translate(-50%, -50%); /* Centers the element */
+}
+
+.catgenerate-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-bottom: 20px;
+    position: absolute; /* Allows precise positioning */
+    top: 60%;
+    left: 45%;
+	width: 40%;
     transform: translate(-50%, -50%); /* Centers the element */
 }
 
@@ -119,4 +142,79 @@ body {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+h1 {
+    color: #333;
+    font-size: 24px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+#categoryList {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%; /* El botón ocupará todo el ancho en móviles */
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+#selectedCategories {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+/* Media queries para pantallas móviles */
+@media (min-width: 600px) {
+    #categoryList {
+        grid-template-columns: 1fr 1fr; /* 2 columnas para pantallas más grandes */
+    }
+}
+
+@media (max-width: 400px) {
+    h1 {
+        font-size: 20px; /* Reduce el tamaño del título en pantallas pequeñas */
+    }
+
+    button {
+        padding: 10px; /* Botón más pequeño en pantallas pequeñas */
+    }
+}
+#randomCategoryButton {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%; /* El botón ocupará todo el ancho en móviles */
+}
+
+#randomCategoryButton:hover {
+    background-color: #0056b3;
+}
+
+#randomCategoryDisplay {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
 }
